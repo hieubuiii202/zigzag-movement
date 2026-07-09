@@ -1,0 +1,363 @@
+{
+  "version": "1.0.0",
+  "description": "Free Fire Zig Zag Movement Configuration - Tránh Đạn",
+  "timestamp": "2026-07-09",
+  "enabled": true,
+
+  "zigzag_movement": {
+    "enabled": true,
+    "name": "Zig Zag Evasion Pattern",
+    "description": "Pattern di chuyển zig zag để tránh đạn sniper và AR",
+    
+    "basic_settings": {
+      "movement_speed": 8,
+      "amplitude": 120,
+      "frequency": 4,
+      "duration": 5000,
+      "enable_jump": true,
+      "enable_slide": true
+    },
+
+    "patterns": {
+      "pattern_1": {
+        "name": "Horizontal Zigzag (Ngang)",
+        "description": "Di chuyển ngang zig zag - tránh sniper trên trên từ xa",
+        "direction": "horizontal",
+        "amplitude": 150,
+        "frequency": 3,
+        "speed": 7,
+        "duration": 4000,
+        "jump_interval": 800,
+        "slide_interval": 1200,
+        "priority": "high"
+      },
+
+      "pattern_2": {
+        "name": "Vertical Zigzag (Dọc)",
+        "description": "Di chuyển dọc zig zag - tránh AR ở khoảng cách trung bình",
+        "direction": "vertical",
+        "amplitude": 100,
+        "frequency": 4,
+        "speed": 8,
+        "duration": 3500,
+        "jump_interval": 600,
+        "slide_interval": 1000,
+        "priority": "medium"
+      },
+
+      "pattern_3": {
+        "name": "Diagonal Zigzag (Chéo)",
+        "description": "Di chuyển chéo zig zag - tránh đạn từ nhiều hướng",
+        "direction": "diagonal",
+        "amplitude": 120,
+        "frequency": 3.5,
+        "speed": 7.5,
+        "duration": 4500,
+        "jump_interval": 700,
+        "slide_interval": 1100,
+        "priority": "high"
+      },
+
+      "pattern_4": {
+        "name": "Circular Zigzag (Tròn)",
+        "description": "Di chuyển tròn zig zag - tránh đạn từ mọi hướng",
+        "direction": "circular",
+        "amplitude": 100,
+        "frequency": 2.5,
+        "speed": 6,
+        "duration": 6000,
+        "jump_interval": 1000,
+        "slide_interval": 1500,
+        "priority": "medium"
+      },
+
+      "pattern_5": {
+        "name": "Rapid Zigzag (Nhanh)",
+        "description": "Di chuyển nhanh zig zag - tránh dãy đạn liên tục",
+        "direction": "horizontal",
+        "amplitude": 80,
+        "frequency": 6,
+        "speed": 9,
+        "duration": 3000,
+        "jump_interval": 400,
+        "slide_interval": 800,
+        "priority": "critical"
+      },
+
+      "pattern_6": {
+        "name": "Evasion Dance (Nhảy Múa)",
+        "description": "Kết hợp jump, slide, zigzag - tránh gần từ cơ bản",
+        "direction": "mixed",
+        "amplitude": 110,
+        "frequency": 3.5,
+        "speed": 7.5,
+        "duration": 5000,
+        "jump_interval": 500,
+        "slide_interval": 900,
+        "priority": "high"
+      }
+    }
+  },
+
+  "combat_scenarios": {
+    "long_range_sniper": {
+      "name": "Sniper từ xa",
+      "recommended_pattern": "pattern_1",
+      "settings": {
+        "movement_speed": 8,
+        "amplitude": 150,
+        "frequency": 3,
+        "pause_between_moves": 500,
+        "jump_height": 0.8,
+        "slide_distance": 3
+      }
+    },
+
+    "mid_range_ar": {
+      "name": "AR khoảng cách trung bình",
+      "recommended_pattern": "pattern_5",
+      "settings": {
+        "movement_speed": 9,
+        "amplitude": 80,
+        "frequency": 6,
+        "pause_between_moves": 200,
+        "jump_height": 0.6,
+        "slide_distance": 2.5
+      }
+    },
+
+    "close_range_smg": {
+      "name": "SMG cầu kỳ gần",
+      "recommended_pattern": "pattern_6",
+      "settings": {
+        "movement_speed": 9,
+        "amplitude": 110,
+        "frequency": 5,
+        "pause_between_moves": 300,
+        "jump_height": 0.9,
+        "slide_distance": 2
+      }
+    },
+
+    "multiple_enemies": {
+      "name": "Nhiều kẻ thù",
+      "recommended_pattern": "pattern_4",
+      "settings": {
+        "movement_speed": 7,
+        "amplitude": 100,
+        "frequency": 2.5,
+        "pause_between_moves": 600,
+        "jump_height": 0.7,
+        "slide_distance": 3
+      }
+    },
+
+    "cover_to_cover": {
+      "name": "Chạy giữa các chướng ngại vật",
+      "recommended_pattern": "pattern_3",
+      "settings": {
+        "movement_speed": 8,
+        "amplitude": 120,
+        "frequency": 3.5,
+        "pause_between_moves": 400,
+        "jump_height": 0.8,
+        "slide_distance": 2.5
+      }
+    }
+  },
+
+  "movement_actions": {
+    "jump": {
+      "enabled": true,
+      "height": 0.8,
+      "frequency": "every_800ms",
+      "randomize": true
+    },
+
+    "slide": {
+      "enabled": true,
+      "distance": 2.5,
+      "frequency": "every_1200ms",
+      "randomize": true
+    },
+
+    "strafe": {
+      "enabled": true,
+      "angle_change": 45,
+      "frequency": "every_1000ms"
+    }
+  },
+
+  "dodge_algorithms": {
+    "prediction_based": {
+      "enabled": true,
+      "anticipate_shots": true,
+      "reaction_time": 150,
+      "prediction_accuracy": 0.85
+    },
+
+    "random_deviation": {
+      "enabled": true,
+      "deviation_range": 80,
+      "change_frequency": 500
+    },
+
+    "adaptive": {
+      "enabled": true,
+      "adjust_to_enemy_weapon": true,
+      "weapon_detection": true,
+      "speed_adjustment": true
+    }
+  },
+
+  "key_mappings": {
+    "move_forward": "W",
+    "move_backward": "S",
+    "move_left": "A",
+    "move_right": "D",
+    "jump": "SPACE",
+    "slide": "CTRL",
+    "aim": "RIGHT_CLICK",
+    "fire": "LEFT_CLICK",
+    "crouch": "C",
+    "sprint": "SHIFT"
+  },
+
+  "touch_controls": {
+    "joystick_left": {
+      "x": 100,
+      "y": 400,
+      "radius": 80,
+      "enabled": true
+    },
+
+    "joystick_right": {
+      "x": 750,
+      "y": 400,
+      "radius": 80,
+      "enabled": true
+    },
+
+    "buttons": {
+      "jump": {
+        "x": 600,
+        "y": 200,
+        "size": 50
+      },
+      "slide": {
+        "x": 700,
+        "y": 200,
+        "size": 50
+      },
+      "fire": {
+        "x": 750,
+        "y": 350,
+        "size": 80
+      },
+      "aim": {
+        "x": 750,
+        "y": 100,
+        "size": 60
+      }
+    }
+  },
+
+  "sensitivity": {
+    "mouse_sensitivity": 2.5,
+    "touch_sensitivity": 1.8,
+    "aim_assist": false,
+    "gyro_aim": false
+  },
+
+  "performance": {
+    "fps_target": 60,
+    "graphics": "high",
+    "network_optimization": true,
+    "lag_compensation": true
+  },
+
+  "presets": {
+    "preset_aggressive": {
+      "name": "Tấn Công Cơ Động",
+      "pattern": "pattern_5",
+      "movement_speed": 9,
+      "amplitude": 80,
+      "frequency": 6,
+      "description": "Di chuyển nhanh, tấn công chủ động"
+    },
+
+    "preset_defensive": {
+      "name": "Phòng Thủ Thận Trọng",
+      "pattern": "pattern_1",
+      "movement_speed": 6,
+      "amplitude": 150,
+      "frequency": 3,
+      "description": "Di chuyển chậm, né tránh cẩn thận"
+    },
+
+    "preset_balanced": {
+      "name": "Cân Bằng",
+      "pattern": "pattern_6",
+      "movement_speed": 7.5,
+      "amplitude": 110,
+      "frequency": 3.5,
+      "description": "Cân bằng giữa tấn công và phòng thủ"
+    },
+
+    "preset_survival": {
+      "name": "Sinh Tồn",
+      "pattern": "pattern_4",
+      "movement_speed": 7,
+      "amplitude": 100,
+      "frequency": 2.5,
+      "description": "Ưu tiên sống sót, tránh mọi đạn"
+    }
+  },
+
+  "advanced_settings": {
+    "enable_prediction": true,
+    "enable_evasion_ai": true,
+    "enable_auto_dodge": true,
+    "enable_sound_detection": true,
+    "enable_muzzle_flash_detection": true,
+    "enable_footstep_detection": true,
+    
+    "ai_difficulty": "extreme",
+    "reaction_speed": 100,
+    "pattern_randomization": 0.8,
+    "unpredictability_factor": 0.9
+  },
+
+  "statistics": {
+    "dodge_success_rate": 0.0,
+    "average_evasion_time": 0,
+    "bullets_dodged": 0,
+    "damage_reduced_percentage": 0.0,
+    "matches_survived": 0
+  },
+
+  "notes": {
+    "warning": "Chỉ sử dụng cho mục đích học tập và thực hành",
+    "fps_support": "Android 5.0+",
+    "tested_devices": [
+      "Samsung Galaxy S20+",
+      "OnePlus 9",
+      "Xiaomi 11",
+      "POCO F3"
+    ],
+    "optimization_tips": [
+      "Đóng các ứng dụng chạy ngầm để tăng hiệu suất",
+      "Điều chỉnh độ sáng màn hình để tránh mỏi mắt",
+      "Sử dụng headphone để nghe âm thanh chính xác hơn",
+      "Thay đổi pattern tùy theo tình huống chiến đấu",
+      "Kết hợp nhiều kỹ thuật: jump, slide, strafe"
+    ],
+    "best_practices": [
+      "Luôn di chuyển, không đứng yên",
+      "Thay đổi pattern thường xuyên",
+      "Sử dụng cover và environment",
+      "Kết hợp với các kỹ năng khác (aim, peeking)",
+      "Practice trong training mode trước"
+    ]
+  }
+}
